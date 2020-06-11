@@ -1,3 +1,4 @@
+/***** Container *****/
 .landing_container {
   height: 100vh;
   width: 80vw;
@@ -24,17 +25,20 @@
   );
 }
 
+/***** Grid *****/
 .landing_grid {
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 10vw 60vw 10vw;
   grid-template-rows: 10vh 80vh 10vh;
-  grid-template-areas: "tl", "tm", "tr" "ml", "mm", "mr" "ll", "lm", "lr";
+  grid-template-areas: "tl tm tr" "ml mm mr" "bl bm br";
   color: white;
 }
 
+/***** Title *****/
 .title {
+  grid-area: mm;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,4 +55,38 @@
   font-size: 200px;
   font-family: greatWishes;
   text-shadow: 0px 10px 20px #191919;
+  letter-spacing: 15px;
+}
+
+/***** Social *****/
+.social {
+  grid-area: bm;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.social img {
+  padding: 0px 20px 0px 20px;
+  width: 40px;
+  height: 40px;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(156deg)
+    brightness(104%) contrast(103%);
+  opacity: 0.7;
+}
+
+/***** Nav Arrow *****/
+.nav {
+  grid-area: tr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_arrow {
+  font-size: 50px;
+  color: #7ae0e0;
 }
