@@ -1,0 +1,54 @@
+.landing_container {
+  height: 100vh;
+  width: 80vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  background-image: url("../../images/Landing/landing.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.landing_grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 10vw 60vw 10vw;
+  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-areas: "tl", "tm", "tr" "ml", "mm", "mr" "ll", "lm", "lr";
+  color: white;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+
+@font-face {
+  font-family: greatWishes;
+  src: url("../../fonts/Great\ Wishes.otf");
+}
+
+.title h1 {
+  font-size: 200px;
+  font-family: greatWishes;
+  text-shadow: 0px 10px 20px #191919;
+}
