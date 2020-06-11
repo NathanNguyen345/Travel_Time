@@ -1,0 +1,41 @@
+.about_container {
+  width: 80vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  height: 100vh;
+  background-image: radial-gradient(#39ebeb, #00b5b5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 40vw auto;
+  grid-template-rows: 100vh;
+  align-items: center;
+}
+
+.flex_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+
+@font-face {
+  font-family: greatWishes;
+  src: url("../../fonts/Great\ Wishes.otf");
+}
+
+.about_title {
+  font-family: greatWishes;
+  font-size: 100px;
+  text-shadow: 0px 8px 10px #191919;
+}
+
+.about_img {
+  width: 600px;
+  height: 600px;
+  transform: rotate(5deg);
+  -webkit-filter: drop-shadow(0px 8px 10px #191919);
+  filter: drop-shadow(0px 8px 10px #191919);
+}
