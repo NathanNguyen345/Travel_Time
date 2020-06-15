@@ -1,0 +1,52 @@
+/***** Location Grid / Flex *****/
+.location_container {
+  height: 100vh;
+  background-color: white;
+  margin-top: 3vw;
+}
+
+.location_grid {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 10vw 80vw 10vw;
+  grid-template-areas: "left mid right";
+}
+
+.grid_middle {
+  grid-area: mid;
+  background-color: white;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 80vw;
+  height: 100vh;
+}
+
+.flex_item {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+}
+
+/***** Flex Item *****/
+@font-face {
+  font-family: greatWishes;
+  src: url("../../fonts/Great\ Wishes.otf");
+}
+
+.location_title {
+  font-family: greatWishes;
+  font-size: 40px;
+  /* text-shadow: 0px 5px 10px #191919; */
+}
+
+.location_img {
+  width: 95%;
+  height: 75%;
+  box-shadow: 0px 5px 10px grey;
+}
