@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./Location.module.css";
 import LocationItem from "./LocationItem";
 import { gsap } from "gsap";
@@ -23,7 +23,7 @@ function Location() {
     });
 
     observer.observe(locationRef.current);
-    setTimeout(() => observer.unobserve(locationRef.current), 5000);
+    setTimeout(() => observer.unobserve(locationRef.current), 1000);
   });
 
   return (

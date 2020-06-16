@@ -57,16 +57,59 @@ function LocationSelect(props) {
     setTimeout(() => history.goBack(), 1000);
   };
 
+  const imgSelector = (city) => {
+    switch (city) {
+      case "Toronto":
+        return (
+          <img
+            src={require(`../../images/Location/Toronto.jpg`)}
+            alt={city}
+            ref={imgRef}
+          ></img>
+        );
+      case "Seattle":
+        return (
+          <img
+            src={require(`../../images/Location/Seattle.jpg`)}
+            alt={city}
+            ref={imgRef}
+          ></img>
+        );
+      case "Portland":
+        return (
+          <img
+            src={require(`../../images/Location/Portland.jpg`)}
+            alt={city}
+            ref={imgRef}
+          ></img>
+        );
+      case "Los Angeles":
+        return (
+          <img
+            src={require(`../../images/Location/Los Angeles.jpg`)}
+            alt={city}
+            ref={imgRef}
+          ></img>
+        );
+      case "San Jose":
+        return (
+          <img
+            src={require(`../../images/Location/San Jose.jpg`)}
+            alt={city}
+            ref={imgRef}
+          ></img>
+        );
+      default:
+        break;
+    }
+  };
+
   return (
     <div className={`${classes.location_select_container}`} ref={locationRef}>
       {console.log(match, location, history)}
       <div className={`${classes.location_select_grid}`}>
         <div className={`${classes.location_select_background}`}>
-          <img
-            src={require(`../../images/Location/${match.params.city}.jpg`)}
-            alt={match.params.city}
-            ref={imgRef}
-          ></img>
+          {imgSelector(match.params.city)}
         </div>
         <div className={`${classes.location_select_info_flex}`}>
           <div className={`${classes.location_select_info_flex_item}`}>

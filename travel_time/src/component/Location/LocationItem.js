@@ -26,10 +26,42 @@ function LocationItem(props) {
    */
   const imgSelector = (city) => {
     switch (city) {
-      case city:
+      case "Toronto":
         return (
           <img
-            src={require(`../../images/Location/${city}-mini.jpg`)}
+            src={require(`../../images/Location/Toronto-mini.jpg`)}
+            alt={city}
+            className={`${classes.location_img}`}
+          ></img>
+        );
+      case "Seattle":
+        return (
+          <img
+            src={require(`../../images/Location/Seattle-mini.jpg`)}
+            alt={city}
+            className={`${classes.location_img}`}
+          ></img>
+        );
+      case "Portland":
+        return (
+          <img
+            src={require(`../../images/Location/Portland-mini.jpg`)}
+            alt={city}
+            className={`${classes.location_img}`}
+          ></img>
+        );
+      case "Los Angeles":
+        return (
+          <img
+            src={require(`../../images/Location/Los Angeles-mini.jpg`)}
+            alt={city}
+            className={`${classes.location_img}`}
+          ></img>
+        );
+      case "San Jose":
+        return (
+          <img
+            src={require(`../../images/Location/San Jose-mini.jpg`)}
             alt={city}
             className={`${classes.location_img}`}
           ></img>
