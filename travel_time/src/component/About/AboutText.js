@@ -6,6 +6,9 @@ function AboutText() {
   const titleRef = useRef(null);
   const paragraphRef = useRef(null);
 
+  /*****
+   * Use intersection observer to start GSAP animation
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(([entity]) => {
       if (entity.isIntersecting) {

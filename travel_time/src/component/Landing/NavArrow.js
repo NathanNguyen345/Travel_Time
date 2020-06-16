@@ -6,7 +6,7 @@ function NavArrow() {
   const arrowRef = useRef(null);
   var showNav = false;
 
-  /***
+  /*****
    * GSAP animate nav arrow to bounce
    */
   const mouseEnter = () => {
@@ -21,6 +21,9 @@ function NavArrow() {
     });
   };
 
+  /*****
+   * Rotate nav icon 180 deg and change the color on click
+   */
   const mouseClick = () => {
     if (!showNav) {
       gsap.to(arrowRef.current, {

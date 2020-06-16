@@ -5,6 +5,9 @@ import { gsap } from "gsap";
 function AboutImg() {
   const imgRef = useRef(null);
 
+  /******
+   * Use intersection observer to start GSAP animation
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(([entity]) => {
       if (entity.isIntersecting) {

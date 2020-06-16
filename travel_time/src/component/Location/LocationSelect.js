@@ -1,30 +1,77 @@
-import React, { useContext } from "react";
+import React, { useRef, useEffect } from "react";
 import classes from "./Location.module.css";
-import { ImageDataContext } from "../../App";
+import { gsap } from "gsap";
 
 function LocationSelect(props) {
   const { match, location, history } = props;
-  const imgDataContext = useContext(ImageDataContext);
+  const locationRef = useRef(null);
+  const imgRef = useRef(null);
+  const titleRef = useRef(null);
+  const paraRef = useRef(null);
+  const buttonRef = useRef(null);
+  const tl = new gsap.timeline();
 
+  /*****
+   * On load, fade div in and use GSAP for animation.
+   */
+  useEffect(() => {
+    tl.to(locationRef.current, {
+      opacity: 1,
+      duration: 1,
+    })
+      .fromTo(
+        imgRef.current,
+        { x: "-100%", opacity: 0 },
+        { x: "0%", opacity: 1, duration: 1 },
+        "-=1"
+      )
+      .fromTo(
+        [titleRef.current, paraRef.current, buttonRef.current],
+        { opacity: 0, y: "30px" },
+        { opacity: 1, y: 0, stagger: 0.5, duration: 1 },
+        "-=1"
+      );
+  });
+
+  /*****
+   * When exit button is clicked, fade out and reroute back to history
+   */
   const buttonClick = () => {
-    imgDataContext.imgDataDispatch({ type: "exit" });
-    history.goBack();
+    tl.to(locationRef.current, {
+      opacity: 0,
+      duration: 1,
+    })
+      .fromTo(
+        imgRef.current,
+        { x: "0%", opacity: 1 },
+        { x: "-100%", opacity: 0, duration: 1 },
+        "-=1"
+      )
+      .fromTo(
+        [buttonRef.current, paraRef.current, titleRef.current],
+        { opacity: 1, y: "0px" },
+        { opacity: 0, y: "30px", stagger: 0.5, duration: 1 },
+        "-=1"
+      );
+
+    setTimeout(() => history.goBack(), 1000);
   };
 
   return (
-    <div className={`${classes.location_select_container} img_select_overlay`}>
+    <div className={`${classes.location_select_container}`} ref={locationRef}>
       {console.log(match, location, history)}
       <div className={`${classes.location_select_grid}`}>
         <div className={`${classes.location_select_background}`}>
           <img
-            src={require(`../../images/Location/${imgDataContext.imgDataState.place}.jpg`)}
-            alt={imgDataContext.imgDataState.place}
+            src={require(`../../images/Location/${match.params.city}.jpg`)}
+            alt={match.params.city}
+            ref={imgRef}
           ></img>
         </div>
         <div className={`${classes.location_select_info_flex}`}>
           <div className={`${classes.location_select_info_flex_item}`}>
-            <h1>{imgDataContext.imgDataState.place}</h1>
-            <p>
+            <h1 ref={titleRef}>{match.params.city}</h1>
+            <p ref={paraRef}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Sodales ut etiam sit amet nisl purus in. Faucibus nisl tincidunt
@@ -48,7 +95,13 @@ function LocationSelect(props) {
               lobortis feugiat. At erat pellentesque adipiscing commodo elit at
               imperdiet dui accumsan. Congue mauris rhoncus aenean vel elit.
             </p>
-            <button onClick={buttonClick}>Exit</button>
+            <button
+              onClick={buttonClick}
+              className={`${classes.back_button}`}
+              ref={buttonRef}
+            >
+              Go Back
+            </button>
           </div>
         </div>
       </div>
