@@ -1,27 +1,25 @@
 import React, { useContext } from "react";
 import classes from "./Location.module.css";
-import { ImageDataContext } from "./Location";
-import gsap from "gsap/gsap-core";
+import { ImageDataContext } from "../../App";
 
-function LocationSelect() {
+function LocationSelect(props) {
+  const { match, location, history } = props;
   const imgDataContext = useContext(ImageDataContext);
-  const tl = new gsap.timeline();
 
   const buttonClick = () => {
     imgDataContext.imgDataDispatch({ type: "exit" });
-    tl.to(".test", { display: "flex", duration: 0.01 })
-      .to(".img_select_overlay", { opacity: 0, duration: 0.3 })
-      .to(".img_select_overlay", {
-        zIndex: 1,
-        duration: 0.01,
-      });
+    history.goBack();
   };
 
   return (
     <div className={`${classes.location_select_container} img_select_overlay`}>
+      {console.log(match, location, history)}
       <div className={`${classes.location_select_grid}`}>
         <div className={`${classes.location_select_background}`}>
-          <img src={require("../../images/Location/toronto.jpg")}></img>
+          <img
+            src={require(`../../images/Location/${imgDataContext.imgDataState.place}.jpg`)}
+            alt={imgDataContext.imgDataState.place}
+          ></img>
         </div>
         <div className={`${classes.location_select_info_flex}`}>
           <div className={`${classes.location_select_info_flex_item}`}>

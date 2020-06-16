@@ -1,13 +1,13 @@
 import React, { useRef, useContext } from "react";
 import classes from "./Location.module.css";
 import { gsap } from "gsap";
-import { ImageDataContext } from "./Location";
+import { ImageDataContext } from "../../App";
+import { Link } from "react-router-dom";
 
 function LocationItem(props) {
-  const { city, id } = props;
+  const { city } = props;
   const overlayRef = useRef();
   const imgDataContext = useContext(ImageDataContext);
-  const tl = new gsap.timeline();
 
   const mouseOver = () => {
     gsap.to(overlayRef.current, { top: "0", duration: 0.15, ease: "none" });
@@ -19,21 +19,15 @@ function LocationItem(props) {
 
   const buttonClick = () => {
     imgDataContext.imgDataDispatch({ type: "location", value: city });
-    tl.to(".img_select_overlay", { zIndex: 3, duration: 0.01 })
-      .to(".img_select_overlay", {
-        opacity: 1,
-        duration: 0.3,
-      })
-      .to(".test", { display: "none", duration: 0.01 });
   };
 
-  const imgSelector = (id) => {
-    switch (id) {
-      case 1:
+  const imgSelector = (city) => {
+    switch (city) {
+      case city:
         return (
           <img
-            src={require("../../images/Location/toronto.jpg")}
-            alt="torono"
+            src={require(`../../images/Location/${city}.jpg`)}
+            alt={city}
             className={classes.location_img}
           ></img>
         );
@@ -50,12 +44,14 @@ function LocationItem(props) {
         onMouseOver={mouseOver}
         onMouseLeave={mouseExit}
       >
-        {imgSelector(id)}
-        <div className={`${classes.img_overlay}`} ref={overlayRef}>
-          <div className={`${classes.overlay_flex_item}`}>
-            <button onClick={buttonClick}>More on {city}</button>
+        {imgSelector(city)}
+        <Link to={`/Location/${city}`}>
+          <div className={`${classes.img_overlay}`} ref={overlayRef}>
+            <div className={`${classes.overlay_flex_item}`}>
+              <button onClick={buttonClick}>More on {city}</button>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
