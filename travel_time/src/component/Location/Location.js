@@ -27,7 +27,8 @@ function Location() {
   });
 
   return (
-    <div className={`${classes.location_container}`} ref={locationRef}>
+    <div className={`${classes.location_container} location`} ref={locationRef}>
+      <div className={`${classes.location_overlay}`}></div>
       <div className={`${classes.location_grid}`}>
         <div className={`${classes.grid_header}`}>
           <h1>-Places I've Visted-</h1>

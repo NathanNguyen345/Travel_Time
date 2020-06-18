@@ -21,10 +21,15 @@
 }
 
 .nav_list li {
+  line-height: 10vh;
+}
+
+.nav_list li button {
   text-transform: uppercase;
   color: white;
   font-size: 30px;
-  line-height: 10vh;
+  background-color: transparent;
+  border: 0px;
 }
 
 /***** Nav Arrow *****/

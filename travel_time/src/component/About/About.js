@@ -5,7 +5,7 @@ import AboutImg from "./AboutImg";
 
 function About() {
   return (
-    <div className={`${classes.about_container}`}>
+    <div className={`${classes.about_container} about`}>
       <div className={`${classes.grid}`}>
         <AboutText />
         <AboutImg />

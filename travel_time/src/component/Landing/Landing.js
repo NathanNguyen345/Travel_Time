@@ -9,7 +9,7 @@ import Nav from "../Nav/Nav";
 function Landing() {
   return (
     <React.Fragment>
-      <div className={`${classes.landing_container}`}>
+      <div className={`${classes.landing_container} home`}>
         <Nav />
         <div className={classes.overlay}></div>
         <div className={`${classes.landing_grid}`}>
