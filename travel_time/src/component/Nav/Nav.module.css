@@ -1,0 +1,41 @@
+.nav_container {
+  position: fixed;
+  width: 13vw;
+  height: 100vh;
+  top: 0;
+  left: 87vw;
+  background-color: rgba(122, 224, 224, 0.5);
+  z-index: 3;
+  opacity: 0;
+}
+
+.nav_flex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.nav_list {
+  list-style-type: none;
+}
+
+.nav_list li {
+  text-transform: uppercase;
+  color: white;
+  font-size: 30px;
+  line-height: 10vh;
+}
+
+/***** Nav Arrow *****/
+.nav_arrow_container {
+  top: 5vh;
+  left: 85vw;
+  z-index: 3;
+  position: fixed;
+}
+
+.nav_arrow {
+  font-size: 50px;
+  color: #7ae0e0;
+}

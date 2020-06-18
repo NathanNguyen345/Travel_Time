@@ -23,7 +23,7 @@ function Location() {
     });
 
     observer.observe(locationRef.current);
-    setTimeout(() => observer.unobserve(locationRef.current), 1000);
+    // setTimeout(() => observer.unobserve(locationRef.current), 2000);
   });
 
   return (
