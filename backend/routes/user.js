@@ -31,7 +31,7 @@ router.post("/add", (req, res) => {
 });
 
 // Update User information
-router.put("/changeUserInfo", (req, res) => {
+router.put("/updateUserInfo", (req, res) => {
   const userId = req.body.userId;
   const updatedFirstName = req.body.firstName;
   const updatedLastName = req.body.lastName;
