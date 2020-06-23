@@ -15,12 +15,24 @@ router.post("/add", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  const newUser = new User({ firstName, lastName, userName, email, password });
-
-  newUser
-    .save()
-    .then(() => res.status(200).json("User Added!"))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
+  // Validate if the user already exist within the database
+  User.findOne({ userName: userName }, (err, userFound) => {
+    if (userFound) {
+      res.status(401).json({ msg: "The username already exist" });
+    } else {
+      const newUser = new User({
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+      });
+      newUser
+        .save()
+        .then(() => res.status(200).json({ msg: "User Added" }))
+        .catch((err) => res.status(400).json(`Error: ${err}`));
+    }
+  });
 });
 
 module.exports = router;

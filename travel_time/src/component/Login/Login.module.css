@@ -1,0 +1,46 @@
+/***** Container *****/
+.login_container {
+  height: 100vh;
+}
+
+.create_user_container {
+  height: 100vh;
+  padding: 0px 10vw 0px 10vw;
+}
+
+/***** Grid *****/
+.login_grid {
+  display: grid;
+  grid-template-columns: 40vw auto;
+  grid-template-rows: 100vh;
+}
+
+/***** Login Img *****/
+.login_img {
+  background-image: url("../../images/Login/login.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/***** Login Flex *****/
+.create_user_flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login_flex_item {
+  text-align: left;
+  padding: 10px 0px 10px;
+}
+
+.login_flex_item label {
+  padding: 0px 10px 0px 10px;
+}
+
+.login_flex_item input {
+  width: 300px;
+  height: 30px;
+}

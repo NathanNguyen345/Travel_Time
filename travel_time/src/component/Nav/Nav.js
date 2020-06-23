@@ -41,6 +41,9 @@ function Nav() {
                 Location
               </button>
             </li>
+            <li>
+              <button>Log In</button>
+            </li>
           </ul>
         </div>
       </div>
