@@ -7,8 +7,6 @@ import LocationSelectInfo from "./LocationSelectInfo";
 function LocationSelect(props) {
   const { match, history } = props;
   const locationRef = useRef(null);
-  const paraRef = useRef(null);
-  const buttonRef = useRef(null);
   const tl = new gsap.timeline();
 
   /*****

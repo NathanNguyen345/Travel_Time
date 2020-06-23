@@ -1,97 +1,76 @@
-import React, { useState } from "react";
-import classes from "./Login.module.css";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
+import classes from "./Login.module.css";
+import UserInput from "./UserInput";
+import UserInputContext from "../context/userInputContext";
+import UserInputReducer from "../context/userInputReducer";
 
 function CreateUser() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const initialState = useContext(UserInputContext);
+  const [state, dispatch] = useReducer(UserInputReducer, initialState);
 
+  // Call API to create user
   const createAccount = () => {
     axios
       .post("/user/add", {
-        firstName: firstName,
-        lastName: lastName,
-        userName: userName,
-        email: email,
-        password: password,
+        firstName: state.firstName,
+        lastName: state.lastName,
+        userName: state.userName,
+        email: state.email,
+        password: state.password,
       })
       .then((resp) => {
-        // alert(resp.data.msg);
-        console.log(resp);
+        alert(resp.data.msg);
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => alert(err.response.data.msg));
+  };
+
+  // Non-matching password flag
+  const passwordFlag = () => {
+    if (state.password !== state.confirmPassword) {
+      return <h3>Password Doesn't Match</h3>;
+    }
   };
 
   return (
-    <div className={`${classes.create_user_container}`}>
-      <div className={`${classes.create_user_flex}`}>
-        <div className={`${classes.login_flex_item}`}>
-          <form>
-            <div className={`${classes.login_flex_item}`}>
-              <label>First Name:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setFirstName(e.target.value.toLowerCase());
-                }}
-              ></input>
-              <label>Last Name:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setLastName(e.target.value.toLowerCase());
-                }}
-              ></input>
-            </div>
+    <UserInputContext.Provider value={{ state, dispatch }}>
+      <div className={`${classes.create_user_container}`}>
+        <div className={`${classes.create_user_flex}`}>
+          <div className={`${classes.login_flex_item}`}>
+            <form>
+              <div className={`${classes.login_flex_item}`}>
+                <UserInput labelName={"First Name"} />
+                <UserInput labelName={"Last Name"} />
+              </div>
 
-            <div className={`${classes.login_flex_item}`}>
-              <label>User Name:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setUserName(e.target.value.toLowerCase());
-                }}
-              ></input>
-            </div>
+              <div className={`${classes.login_flex_item}`}>
+                <UserInput labelName={"User Name"} />
+              </div>
 
-            <div className={`${classes.login_flex_item}`}>
-              <label>Email:</label>
-              <input
-                type="email"
-                onChange={(e) => {
-                  setEmail(e.target.value.toLowerCase());
-                }}
-              ></input>
-            </div>
+              <div className={`${classes.login_flex_item}`}>
+                <UserInput labelName={"Email"} />
+              </div>
 
-            <div className={`${classes.login_flex_item}`}>
-              <label>Password:</label>
-              <input
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value.toLowerCase());
-                }}
-              ></input>
-              <label>Confirm Password:</label>
-              <input
-                type="password"
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value.toLowerCase());
-                }}
-              ></input>
-            </div>
+              <div className={`${classes.login_flex_item}`}>
+                <UserInput labelName={"Password"} />
+                <UserInput labelName={"Confirm Password"} />
+                {passwordFlag()}
+              </div>
 
-            <button type="button" onClick={createAccount}>
-              Create Account
-            </button>
-          </form>
+              <button
+                type="button"
+                onClick={createAccount}
+                disabled={
+                  state.password === state.confirmPassword ? false : true
+                }
+              >
+                Create Account
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </UserInputContext.Provider>
   );
 }
 
