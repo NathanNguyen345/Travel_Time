@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./Login.module.css";
-import UserInputContext from "../context/userInputContext";
 
 function UserInput(props) {
-  const { dispatch } = useContext(UserInputContext);
-  const { labelName } = props;
+  const { labelName, dispatch } = props;
 
   return (
     <React.Fragment>

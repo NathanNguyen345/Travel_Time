@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import classes from "./Nav.module.css";
-import NavArrow from "./NavArrow";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { Link } from "react-router-dom";
+import NavArrow from "./NavArrow";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -42,7 +43,9 @@ function Nav() {
               </button>
             </li>
             <li>
-              <button>Log In</button>
+              <Link to="/Login">
+                <button>Log In</button>
+              </Link>
             </li>
           </ul>
         </div>

@@ -114,4 +114,28 @@ router.delete("/delete", (req, res) => {
   });
 });
 
+// User Login
+router.post("/login", (req, res) => {
+  const inputUserName = req.body.userName;
+  const inputPassword = req.body.password;
+
+  // Check to see if User exist in db.
+  User.findOne({ userName: inputUserName }, (err, userFound) => {
+    if (userFound) {
+      // Validate existing user password
+      if (userFound.password === inputPassword) {
+        data = {
+          userName: userFound.userName,
+          id: userFound._id,
+        };
+        res.status(200).json({ data });
+      } else {
+        res.status(400).json({ msg: "Incorrect password" });
+      }
+    } else {
+      res.status(400).json({ msg: "User name not found" });
+    }
+  });
+});
+
 module.exports = router;
