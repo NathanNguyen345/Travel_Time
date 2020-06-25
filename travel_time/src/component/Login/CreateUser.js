@@ -7,10 +7,8 @@ function CreateUser() {
   return (
     <div className={`${classes.create_user_container}`}>
       <div className={`${classes.create_user_flex}`}>
-        <div className={`${classes.login_flex_item}`}>
-          {/* <CreateUserForm /> */}
-          <UserLogin />
-        </div>
+        <CreateUserForm />
+        {/* <UserLogin /> */}
       </div>
     </div>
   );
