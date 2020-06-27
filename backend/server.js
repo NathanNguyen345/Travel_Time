@@ -1,6 +1,6 @@
 // packages
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 const mongoose = require("mongoose");
 
 // dotenv config
@@ -27,9 +27,13 @@ connection.once("open", () => {
   console.log("Connected to Mongo DB!");
 });
 
-// add model routes
+// add User model route
 const userRouter = require("./routes/user");
 app.use("/user", userRouter);
+
+// add Location model route
+const locationRouter = require("./routes/location");
+app.use("/location", locationRouter);
 
 // run server
 app.listen(port, () => {

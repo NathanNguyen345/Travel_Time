@@ -6,7 +6,7 @@ const locationSchema = new Schema(
   {
     name: { type: String, required: true },
     link: { type: String, required: true },
-    pictures: { type: Array, ref: "Picture", required: true },
+    pictures: [{ type: Schema.Types.ObjectId, ref: "Picture" }],
   },
   {
     timestamps: true,

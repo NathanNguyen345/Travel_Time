@@ -9,7 +9,7 @@ const pictureSchema = new Schema(
     description: { type: String, required: true },
     likes: { type: Number, required: true },
     dislikes: { type: Number, required: true },
-    comments: { type: Array, ref: "Comment" },
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   },
   {
     timestamps: true,
