@@ -10,6 +10,7 @@ import UserInputContext from "./component/context/userInputContext";
 import UserInputReducer from "./component/context/userInputReducer";
 import UserLoginContext from "./component/context/userLoginContext";
 import UserLoginReducer from "./component/context/userLoginReducer";
+import Admin from "./component/Admin/Admin";
 
 function App() {
   // User Input Context
@@ -35,6 +36,7 @@ function App() {
               <Route path="/" exact component={Landing} />
               <Route path="/Location/:city" component={LocationSelect} />
               <Route path="/Login" exact component={Login} />
+              <Route path="/Admin" exact component={Admin} />
             </Switch>
           </div>
         </UserInputContext.Provider>

@@ -35,6 +35,10 @@ app.use("/user", userRouter);
 const locationRouter = require("./routes/location");
 app.use("/location", locationRouter);
 
+// add Picture model route
+const pictureRouter = require("./routes/picture");
+app.use("/picture", pictureRouter);
+
 // run server
 app.listen(port, () => {
   console.log(`App running on port: ${port}`);
