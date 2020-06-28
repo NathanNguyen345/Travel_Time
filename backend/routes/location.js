@@ -28,4 +28,18 @@ router.get("/getLocation", (req, res) => {
   });
 });
 
+router.get("/getLocationPicture/:id", (req, res) => {
+  const locationId = req.params.id;
+
+  Location.findById({ _id: locationId })
+    .populate("pictures")
+    .exec((err, pictures) => {
+      if (pictures.pictures.length > 0) {
+        res.status(200).json(pictures.pictures);
+      } else {
+        res.status(200).json([]);
+      }
+    });
+});
+
 module.exports = router;

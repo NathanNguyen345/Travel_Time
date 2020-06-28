@@ -6,29 +6,29 @@ let Picture = require("../models/picture.model");
 let Location = require("../models/location.model");
 
 router.get("/getPicture/:id", (req, res) => {
-  const locationId = req.params.id;
+  const pictureId = req.params.id;
 
-  Location.findById({ _id: locationId })
-    .populate("pictures")
-    .exec((err, pictures) => {
-      if (pictures.pictures.length > 0) {
-        res.status(200).json(pictures.pictures);
-      } else {
-        res.status(200).json([]);
-      }
-    });
+  Picture.findById({ _id: pictureId }, (err, pictureFound) => {
+    if (pictureFound) {
+      res.status(200).json({ pictureFound });
+    } else {
+      res.status(400).json({ msg: "Picture not found" });
+    }
+  });
 });
 
 // Post Picture to Location API
 router.post("/addPicture/:id", upload.single("uploadFile"), (req, res) => {
   const locationId = req.params.id;
   const pictureName = req.body.name;
+  const description = req.body.description;
 
   // Create new Picture model
   const picturePost = new Picture({
     name: pictureName,
-    link: "Test Picture Link",
-    description: "Test Description",
+    img: req.file.buffer,
+    contentType: req.file.mimetype,
+    description: description,
     likes: 0,
     dislikes: 0,
   });

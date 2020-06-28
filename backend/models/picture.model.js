@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const pictureSchema = new Schema(
   {
     name: { type: String, required: true },
-    link: { type: String, required: true },
+    img: { type: Buffer, required: true },
+    contentType: { type: String, requred: true },
     description: { type: String, required: true },
     likes: { type: Number, required: true },
     dislikes: { type: Number, required: true },

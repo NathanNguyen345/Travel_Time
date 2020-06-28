@@ -4,6 +4,7 @@ import {
   DELETE_PICTURE_ID,
   LOCATION_DATA,
   PICTURE_DATA,
+  SELECTED_PICTURE,
 } from "./types";
 
 export default (state, action) => {
@@ -22,6 +23,9 @@ export default (state, action) => {
       return { ...state };
     case PICTURE_DATA:
       state.pictureData = action.value;
+      return { ...state };
+    case SELECTED_PICTURE:
+      state.selectedPicture = action.value;
       return { ...state };
     default:
       return;
