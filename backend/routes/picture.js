@@ -5,6 +5,13 @@ let upload = multer();
 let Picture = require("../models/picture.model");
 let Location = require("../models/location.model");
 
+router.get("/test", (req, res) => {
+  Picture.findById({ _id: "5ef9122ba5e5fa7fd4b1b1ab" }, (err, found) => {
+    console.log(found);
+    res.status(200).json({ msg: "okay" });
+  });
+});
+
 router.get("/getPicture/:id", (req, res) => {
   const pictureId = req.params.id;
 

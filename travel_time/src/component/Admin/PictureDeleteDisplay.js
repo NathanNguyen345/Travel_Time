@@ -3,23 +3,26 @@ import adminContext from "../context/adminContext";
 
 function PictureDeleteDisplay() {
   const { adminState } = useContext(adminContext);
-  const [imgURL, setImgURL] = useState();
+  const [base64Img, setBase64Img] = useState();
 
+  // Convert Array Buffer to Base64 to be rendered to screen
   useEffect(() => {
-    var blobData = new Blob([
-      adminState.selectedPicture.img.data,
-      { type: adminState.selectedPicture.contentType },
-    ]);
-
-    // var objectURL = URL.createObjectURL(blobData);
-
-    setImgURL(blobData);
-  }, []);
+    var binary = "";
+    var bytes = new Uint8Array(adminState.selectedPicture.img.data);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    setBase64Img(btoa(binary));
+  });
 
   return (
     <div>
-      {console.log(imgURL)}
-      <img src={imgURL}></img>
+      {base64Img ? (
+        <img
+          src={`data:${adminState.selectedPicture.contentTyp};base64, ${base64Img}`}
+        />
+      ) : null}
     </div>
   );
 }
