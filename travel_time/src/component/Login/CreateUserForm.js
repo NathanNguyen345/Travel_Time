@@ -31,39 +31,6 @@ function CreateUserForm() {
   };
 
   return (
-    // <React.Fragment>
-    //   <form>
-    //     <div className={`${classes.login_flex_item}`}>
-    //       <UserInput labelName={"First Name"} dispatch={inputDispatch} />
-    //       <UserInput labelName={"Last Name"} dispatch={inputDispatch} />
-    //     </div>
-
-    //     <div className={`${classes.login_flex_item}`}>
-    //       <UserInput labelName={"User Name"} dispatch={inputDispatch} />
-    //     </div>
-
-    //     <div className={`${classes.login_flex_item}`}>
-    //       <UserInput labelName={"Email"} dispatch={inputDispatch} />
-    //     </div>
-
-    //     <div className={`${classes.login_flex_item}`}>
-    //       <UserInput labelName={"Password"} dispatch={inputDispatch} />
-    //       <UserInput labelName={"Confirm Password"} dispatch={inputDispatch} />
-    //       {passwordFlag()}
-    //     </div>
-
-    //     <button
-    //       type="button"
-    //       onClick={createAccount}
-    //       disabled={
-    //         inputState.password === inputState.confirmPassword ? false : true
-    //       }
-    //     >
-    //       Create Account
-    //     </button>
-    //   </form>
-    // </React.Fragment>
-
     <React.Fragment>
       <form className={`${classes.create_user_form}`}>
         <div className={`${classes.form_flex_item}`}>

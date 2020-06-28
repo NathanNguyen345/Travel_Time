@@ -5,9 +5,23 @@ let upload = multer();
 let Picture = require("../models/picture.model");
 let Location = require("../models/location.model");
 
+router.get("/getPicture/:id", (req, res) => {
+  const locationId = req.params.id;
+
+  Location.findById({ _id: locationId })
+    .populate("pictures")
+    .exec((err, pictures) => {
+      if (pictures.pictures.length > 0) {
+        res.status(200).json(pictures.pictures);
+      } else {
+        res.status(200).json([]);
+      }
+    });
+});
+
 // Post Picture to Location API
-router.post("/addPicture", upload.single("uploadFile"), (req, res) => {
-  const locationId = req.body.id;
+router.post("/addPicture/:id", upload.single("uploadFile"), (req, res) => {
+  const locationId = req.params.id;
   const pictureName = req.body.name;
 
   // Create new Picture model
@@ -33,9 +47,9 @@ router.post("/addPicture", upload.single("uploadFile"), (req, res) => {
 });
 
 // Delete Picture from Location API
-router.delete("/deletePicture", (req, res) => {
-  const locationId = req.body.id;
-  const pictureId = req.body.pictureId;
+router.delete("/deletePicture/:id/:pictureId", (req, res) => {
+  const locationId = req.params.id;
+  const pictureId = req.params.pictureId;
 
   // Find Location using ID
   Location.findById({ _id: locationId }, (err, locationFound) => {

@@ -32,6 +32,7 @@ function LocationItem(props) {
         <img
           src={require(`../../../public/image/LocationMini/${link}`)}
           className={`${classes.location_img}`}
+          alt={link}
         ></img>
         <Link to={`/Location/${city}`}>
           <div className={`${classes.img_overlay}`} ref={overlayRef}>

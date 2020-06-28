@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
-function UploadPicture() {
+function UploadPicture(props) {
+  const { uploadId } = props;
   const uploadRef = useRef(null);
   const nameRef = useRef(null);
   const [noFile, setNoFile] = useState("");
 
+  // Add a picture to a selected location
   const addPicture = () => {
     if (uploadRef.current.files[0]) {
       let formData = new FormData();
@@ -18,7 +20,7 @@ function UploadPicture() {
       };
 
       axios
-        .post("/picture/addPicture", formData, config)
+        .post(`/picture/addPicture/${uploadId}`, formData, config)
         .then((res) => {
           console.log(res);
         })
@@ -29,6 +31,7 @@ function UploadPicture() {
       setNoFile("No File To Upload");
     }
   };
+
   return (
     <div>
       <input type="file" ref={uploadRef}></input>
