@@ -8,6 +8,7 @@ import {
   PICTURE_DATA,
   DELETE_LOCATION_ID,
   LOCATION_DATA,
+  SELECTED_PICTURE,
 } from "../context/types";
 import PictureDeleteDisplay from "./PictureDeleteDisplay";
 
@@ -35,6 +36,8 @@ function PictureDelete() {
           .get(`/location/getLocationPicture/${adminState.deleteLocationId}`)
           .then((res) => adminDispatch({ type: PICTURE_DATA, value: res.data }))
           .catch((err) => console.log(err.response.data.msg));
+
+        adminDispatch({ type: SELECTED_PICTURE, value: null });
       })
       .catch((err) => {
         console.log(err.response.data.msg);

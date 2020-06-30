@@ -14,13 +14,14 @@ function PictureDeleteDisplay() {
       binary += String.fromCharCode(bytes[i]);
     }
     setBase64Img(btoa(binary));
-  });
+  }, [adminState.selectedPicture.img.data]);
 
   return (
     <div>
       {base64Img ? (
         <img
           src={`data:${adminState.selectedPicture.contentTyp};base64, ${base64Img}`}
+          alt="selectedPicture"
         />
       ) : null}
     </div>

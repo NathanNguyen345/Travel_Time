@@ -1,3 +1,103 @@
+/***** Admin Panel *****/
+.admin_panel {
+  height: 100vh;
+  width: 100vw;
+  background-color: #7ae0e0;
+}
+
+@font-face {
+  font-family: greatWishes;
+  src: url("../../fonts/GreatWishes.otf");
+}
+
+.ap_wrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 100vh;
+  grid-template-areas: "nav content";
+}
+
+/***** Admin Nav *****/
+.ap_nav_container {
+  grid-area: nav;
+  width: 100%;
+  height: 100%;
+}
+
+.ap_nav_wrapper {
+  display: grid;
+  grid-template-rows: 20vh 60vh 20vh;
+  grid-template-areas: "title" "links" "logout";
+}
+
+/***** Admin Nav Title *****/
+.ap_nav_title {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.ap_nav_wrapper h1 {
+  grid-area: title;
+  font-family: greatWishes;
+  font-size: 50px;
+  color: white;
+  letter-spacing: 5px;
+}
+
+/***** Admin Nav Links *****/
+.ap_nav_flex {
+  grid-area: links;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.ap_nav_flex_item {
+}
+
+.ap_nav_flex_item button {
+  font-size: 30px;
+  color: #565656;
+  border: 0px;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+/***** Admin Nav Button *****/
+.ap_nav_logout {
+  grid-area: logout;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.ap_nav_logout_flex_item button {
+  font-family: greatwishes;
+  font-size: 15px;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  border: 0px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+/***** Admin Content *****/
+.ap_context_container {
+  grid-area: content;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  box-shadow: -15px 0 10px rgba(0, 0, 0, 0.15);
+}
+
 .upload_location_selector {
   width: 200px;
 }
