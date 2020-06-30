@@ -1,21 +1,25 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import classes from "./Admin.module.css";
-import AdminContext from "../context/adminContext";
+import classes from "../Admin.module.css";
+import AdminContext from "../../context/adminContext";
 
-import { SELECTED_PICTURE, DELETE_PICTURE_ID } from "../context/types";
+import { SELECTED_PICTURE, DELETE_PICTURE_ID } from "../../context/types";
+import PictureItem from "./PictureItem";
 
 function PictureSelector(props) {
   const { adminState, adminDispatch } = useContext(AdminContext);
   const { dispatchType } = props;
 
   // Map to render Picture options
+  // const renderPicture = adminState.pictureData.map((picture) => {
+  //   return (
+  //     <option value={picture._id} key={picture._id}>
+  //       {picture.name}
+  //     </option>
+  //   );
+  // });
   const renderPicture = adminState.pictureData.map((picture) => {
-    return (
-      <option value={picture._id} key={picture._id}>
-        {picture.name}
-      </option>
-    );
+    return <PictureItem {...picture} key={picture._id} />;
   });
 
   // Dispatch to adminDispatch when new selection is selected
@@ -37,8 +41,8 @@ function PictureSelector(props) {
   };
 
   return (
-    <div>
-      <select
+    <React.Fragment>
+      {/* <select
         size={10}
         className={`${classes.upload_location_selector}`}
         onChange={handleSelectionChange}
@@ -46,8 +50,9 @@ function PictureSelector(props) {
       >
         <option value="none" disabled hidden></option>
         {renderPicture}
-      </select>
-    </div>
+      </select> */}
+      {renderPicture}
+    </React.Fragment>
   );
 }
 

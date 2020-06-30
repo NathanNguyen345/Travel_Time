@@ -1,9 +1,8 @@
 import React, { useContext, useReducer } from "react";
 import classes from "./Admin.module.css";
 import AdminContext from "../context/adminContext";
+import AdminContent from "./AdminContent/AdminContent";
 import adminReducer from "../context/adminReducer";
-import PictureUpload from "./PictureUpload";
-import PictureDelete from "./PictureDelete";
 import AdminNav from "./AdminNav";
 
 function Admin() {
@@ -20,9 +19,9 @@ function Admin() {
           <div className={`${classes.ap_nav_container}`}>
             <AdminNav />
           </div>
-          <div className={`${classes.ap_context_container}`}></div>
-          {/* <PictureUpload /> */}
-          {/* <PictureDelete /> */}
+          <div className={`${classes.ap_content_container}`}>
+            <AdminContent />
+          </div>
         </div>
       </div>
     </AdminContext.Provider>

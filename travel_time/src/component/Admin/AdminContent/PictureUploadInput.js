@@ -1,7 +1,8 @@
 import React, { useRef, useState, useContext } from "react";
 import axios from "axios";
-import adminContext from "../context/adminContext";
-import { PICTURE_DATA } from "../context/types";
+import classes from "../Admin.module.css";
+import adminContext from "../../context/adminContext";
+import { PICTURE_DATA } from "../../context/types";
 
 function PictureUploadInput(props) {
   const { adminState, adminDispatch } = useContext(adminContext);
@@ -49,14 +50,20 @@ function PictureUploadInput(props) {
   };
 
   return (
-    <div>
-      <input type="file" ref={uploadRef}></input>
-      <input type="text" placeholder="Name" ref={nameRef}></input>
-      <input type="text" placeholder="Description" ref={descriptionRef}></input>
-      <button type="button" onClick={addPicture}>
-        Add Picture
-      </button>
-      <h2>{noFile}</h2>
+    <div className={`${classes.ap_pictue_upload_flex}`}>
+      <div className={`${classes.ap_picture_upload_outter}`}>
+        <input type="file" ref={uploadRef}></input>
+        <input type="text" placeholder="Name" ref={nameRef}></input>
+        <input
+          type="text"
+          placeholder="Description"
+          ref={descriptionRef}
+        ></input>
+        <button type="button" onClick={addPicture}>
+          Add Picture
+        </button>
+        <h2>{noFile}</h2>
+      </div>
     </div>
   );
 }

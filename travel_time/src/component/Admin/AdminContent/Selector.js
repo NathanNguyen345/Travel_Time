@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from "react";
 import axios from "axios";
-import classes from "./Admin.module.css";
-import AdminContext from "../context/adminContext";
+import classes from "../Admin.module.css";
+import AdminContext from "../../context/adminContext";
 
 function Selector(props) {
   const { adminState, adminDispatch } = useContext(AdminContext);
-  const { apiURL, dispatchType, dataType } = props;
+  const { apiURL, dispatchType, dataType, dropDownSize } = props;
 
   // Fetch Location API data
   useEffect(() => {
@@ -32,14 +32,15 @@ function Selector(props) {
   };
 
   return (
-    <div>
+    <div className={`${classes.ap_selector}`}>
       <select
-        size={10}
-        className={`${classes.upload_location_selector}`}
+        size={dropDownSize}
         onChange={handleSelectionChange}
         defaultValue="none"
       >
-        <option value="none" disabled hidden></option>
+        <option value="none" disabled hidden>
+          Select A Location
+        </option>
         {renderLocation}
       </select>
     </div>
