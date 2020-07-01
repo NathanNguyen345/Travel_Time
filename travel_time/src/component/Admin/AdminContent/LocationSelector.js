@@ -3,6 +3,7 @@ import classes from "../Admin.module.css";
 import Selector from "./Selector";
 
 import { UPLOAD_ID, LOCATION_DATA } from "../../context/types";
+import DeleteButton from "./DeleteButton";
 
 function LocationSelector() {
   return (
@@ -14,12 +15,7 @@ function LocationSelector() {
           dataType={LOCATION_DATA}
           dropDownSize={1}
         />
-        <button className={`${classes.ap_trash_button}`}>
-          <img
-            className={`${classes.ap_trash_icon}`}
-            src={require("../../../images/Admin/trash.svg")}
-          ></img>
-        </button>
+        <DeleteButton />
       </div>
     </div>
   );

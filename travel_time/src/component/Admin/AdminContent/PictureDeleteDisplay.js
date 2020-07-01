@@ -17,7 +17,7 @@ function PictureDeleteDisplay(props) {
   }, []);
 
   return (
-    <div>
+    <div className={`${classes.ap_picture_item_img_container}`}>
       {base64Img ? (
         <img
           src={`data:${contentType};base64, ${base64Img}`}

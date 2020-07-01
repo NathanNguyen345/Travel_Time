@@ -1,4 +1,4 @@
-/***** Container *****/
+/*************** Container ***************/
 .login_container {
   height: 100vh;
 }
@@ -8,14 +8,14 @@
   padding: 0px 10vw 0px 10vw;
 }
 
-/***** Grid *****/
+/*************** Grid ***************/
 .login_grid {
   display: grid;
   grid-template-columns: 40vw auto;
   grid-template-rows: 100vh;
 }
 
-/***** Login Img *****/
+/*************** Login Img ***************/
 .login_img {
   background-image: url("../../images/Login/login.jpg");
   background-position: center;
@@ -23,7 +23,7 @@
   background-repeat: no-repeat;
 }
 
-/***** Login Flex *****/
+/*************** Login Flex ***************/
 .create_user_flex {
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
   height: 100vh;
 }
 
-/***** Form *****/
+/*************** Form ***************/
 .form_flex_item {
   display: flex;
   flex-direction: row;
@@ -42,7 +42,7 @@
   width: 100%;
 }
 
-/***** Inputs *****/
+/*************** Inputs ***************/
 .user_input_container {
   position: relative;
   width: 400px;
@@ -86,7 +86,7 @@
   left: -100%;
 }
 
-/* Change the white to any color ;) */
+/*************** Change the white to any color ***************/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
