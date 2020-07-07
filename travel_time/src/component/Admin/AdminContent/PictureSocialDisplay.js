@@ -8,19 +8,20 @@ function PictureSocialDisplay(props) {
     <div className={`${classes.ap_picture_social_grid}`}>
       <div className={`${classes.ap_picture_social_flex}`}>
         <img src={require("../../../images/Admin/thumb.svg")}></img>
-        <div>
-          <h1>{likes}</h1>
-        </div>
+        <p>{likes}</p>
       </div>
       <div className={`${classes.ap_picture_social_flex}`}>
-        <img src={require("../../../images/Admin/thumb.svg")}></img>
-        <h1>{dislikes}</h1>
+        <img
+          src={require("../../../images/Admin/thumb.svg")}
+          className={`${classes.ap_picture_flipped}`}
+        ></img>
+        <p>{dislikes}</p>
       </div>
       <div className={`${classes.ap_picture_social_flex}`}>
         <img src={require("../../../images/Admin/comment.svg")}></img>
-        <h1>{comments.length}</h1>
+        <p>{comments.length}</p>
       </div>
-      <DeleteButton />
+      <DeleteButton id={id} />
     </div>
   );
 }
