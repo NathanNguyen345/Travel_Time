@@ -15,6 +15,7 @@ function PictureItem(props) {
     img,
     contentType,
   } = props;
+
   return (
     <div className={`${classes.ap_picture_item}`}>
       <PictureDeleteDisplay img={img.data} contentType={contentType} />

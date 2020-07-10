@@ -46,7 +46,7 @@ router.post("/addPicture/:id", upload.single("uploadFile"), (req, res) => {
       picturePost.save();
       foundLocation.pictures.push(picturePost);
       foundLocation.save();
-      res.status(200).json({ msg: "Picture added" });
+      res.status(200).json({ msg: "Picture added", payload: picturePost });
     } else {
       res.status(400).json({ msg: "Invalid location id" });
     }

@@ -1,36 +1,42 @@
 import React, { useContext } from "react";
 import classes from "../Admin.module.css";
 import axios from "axios";
-import { SELECTED_PICTURE, DELETE_PICTURE_ID } from "../../context/types";
+import { DELETE_PICTURE_ID, PICTURE_DATA } from "../../context/types";
 import AdminContext from "../../context/adminContext";
 
 function DeleteButton(props) {
   const { id } = props;
-  const { adminDispatch } = useContext(AdminContext);
+  const { adminState, adminDispatch } = useContext(AdminContext);
 
   // Dispatch to adminDispatch when new selection is selected
-  const handleSelectionChange = (e) => {
-    adminDispatch({ type: DELETE_PICTURE_ID, value: e.target.value });
-
-    // If selecting a picture, adminDispatch to get picture information to be displayed
+  const handleSelectionChange = () => {
     axios
-      .get(`/picture/getPicture/${e.target.value}`)
-      .then((res) =>
+      .delete(`/picture/deletePicture/${adminState.uploadLocationId}/${id}`)
+      .then((res) => {
         adminDispatch({
-          type: SELECTED_PICTURE,
-          value: res.data.pictureFound,
-        })
-      )
-      .catch((err) => console.log(err.response.data.msg));
+          type: DELETE_PICTURE_ID,
+          value: id,
+        });
+        // axios
+        //   .get(`/location/getLocationPicture/${adminState.uploadLocationId}`)
+        //   .then((res) => adminDispatch({ type: PICTURE_DATA, value: res.data }))
+        //   .catch((err) => console.log(err.response.data.msg));
+      })
+      .catch((err) => {
+        console.log(err.response.data.msg);
+      });
   };
 
   return (
     <React.Fragment>
-      {console.log(id)}
-      <button className={`${classes.ap_trash_button}`}>
+      <button
+        className={`${classes.ap_trash_button}`}
+        onClick={handleSelectionChange}
+      >
         <img
           className={`${classes.ap_trash_icon}`}
           src={require("../../../images/Admin/trash.svg")}
+          alt="location_picture"
         ></img>
       </button>
     </React.Fragment>

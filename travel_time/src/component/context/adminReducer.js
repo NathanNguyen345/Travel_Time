@@ -5,7 +5,32 @@ import {
   LOCATION_DATA,
   PICTURE_DATA,
   SELECTED_PICTURE,
+  ADD_PICTURE_DATA,
 } from "./types";
+
+const removePictureData = (id, state) => {
+  const newPictureData = [...state.pictureData];
+
+  newPictureData.find((data, index) => {
+    if (data._id === id) {
+      newPictureData.splice(index, 1);
+    }
+  });
+
+  return {
+    ...state,
+    pictureData: newPictureData,
+  };
+};
+
+const addPictureData = (data, state) => {
+  const newPictureData = [...state.pictureData, data];
+
+  return {
+    ...state,
+    pictureData: newPictureData,
+  };
+};
 
 export default (state, action) => {
   switch (action.type) {
@@ -16,8 +41,9 @@ export default (state, action) => {
       state.deleteLocationId = action.value;
       return { ...state };
     case DELETE_PICTURE_ID:
-      state.deletePictureId = action.value;
-      return { ...state };
+      return removePictureData(action.value, state);
+    case ADD_PICTURE_DATA:
+      return addPictureData(action.value, state);
     case LOCATION_DATA:
       state.locationData = action.value;
       return { ...state };

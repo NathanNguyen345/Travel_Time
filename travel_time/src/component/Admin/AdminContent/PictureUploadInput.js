@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext } from "react";
 import axios from "axios";
 import classes from "../Admin.module.css";
 import adminContext from "../../context/adminContext";
-import { PICTURE_DATA } from "../../context/types";
+import { ADD_PICTURE_DATA } from "../../context/types";
 
 function PictureUploadInput(props) {
   const { adminState, adminDispatch } = useContext(adminContext);
@@ -28,18 +28,11 @@ function PictureUploadInput(props) {
       axios
         .post(`/picture/addPicture/${uploadId}`, formData, config)
         .then((res) => {
-          console.log(res);
-          if (adminState.uploadLocationId === adminState.deleteLocationId) {
-            // After adding picture to db, we fetch new list of subdocs for the location
-            axios
-              .get(
-                `/location/getLocationPicture/${adminState.deleteLocationId}`
-              )
-              .then((res) =>
-                adminDispatch({ type: PICTURE_DATA, value: res.data })
-              )
-              .catch((err) => console.log(err.response.data.msg));
-          }
+          // After adding picture to db and dispatch new payload to context
+          adminDispatch({
+            type: ADD_PICTURE_DATA,
+            value: res.data.payload,
+          });
         })
         .catch((err) => {
           console.log(err.response.data.msg);
