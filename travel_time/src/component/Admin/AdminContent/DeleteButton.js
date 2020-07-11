@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import classes from "../Admin.module.css";
 import axios from "axios";
-import { DELETE_PICTURE_ID, PICTURE_DATA } from "../../context/types";
+import { DELETE_PICTURE_ID } from "../../context/types";
 import AdminContext from "../../context/adminContext";
 
 function DeleteButton(props) {
@@ -17,10 +17,6 @@ function DeleteButton(props) {
           type: DELETE_PICTURE_ID,
           value: id,
         });
-        // axios
-        //   .get(`/location/getLocationPicture/${adminState.uploadLocationId}`)
-        //   .then((res) => adminDispatch({ type: PICTURE_DATA, value: res.data }))
-        //   .catch((err) => console.log(err.response.data.msg));
       })
       .catch((err) => {
         console.log(err.response.data.msg);

@@ -14,6 +14,10 @@ const removePictureData = (id, state) => {
   newPictureData.find((data, index) => {
     if (data._id === id) {
       newPictureData.splice(index, 1);
+      return {
+        ...state,
+        pictureData: newPictureData,
+      };
     }
   });
 

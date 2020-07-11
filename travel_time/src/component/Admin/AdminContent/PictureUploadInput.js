@@ -5,7 +5,7 @@ import adminContext from "../../context/adminContext";
 import { ADD_PICTURE_DATA } from "../../context/types";
 
 function PictureUploadInput(props) {
-  const { adminState, adminDispatch } = useContext(adminContext);
+  const { adminDispatch } = useContext(adminContext);
   const { uploadId } = props;
   const uploadRef = useRef(null);
   const nameRef = useRef(null);

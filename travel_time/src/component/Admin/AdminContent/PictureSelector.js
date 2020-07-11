@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import classes from "../Admin.module.css";
 import AdminContext from "../../context/adminContext";
 
 import PictureItem from "./PictureItem";
